@@ -1,6 +1,7 @@
 function! SubstituteByOneChar()
   let inputLine = getline('.')
-  let outputLine = substitute(inputLine, 'a', 'x', 'g')
+  let url = 'http://localhost:8000/?statement='.inputLine
+  let outputLine = system('curl -sf "'.url.'"')
   call setline(line('.'), outputLine)
 endfunction
 
